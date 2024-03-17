@@ -24,3 +24,6 @@ class CarItem:
     car_number: Optional[str]
     car_vin: Optional[str]
     datetime_found: datetime
+
+
+

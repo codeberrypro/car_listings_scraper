@@ -7,13 +7,10 @@ from scrapy.http import HtmlResponse
 
 
 class CarSpider(scrapy.Spider):
-    name = "used_cars"
+    name = "cars"
     allowed_domains = ["auto.ria.com"]
     start_urls = ["https://auto.ria.com/uk/car/used/"]
 
-    custom_settings = {
-        'LOG_LEVEL': 'ERROR'
-    }
 
     def parse(self, response: HtmlResponse):
         """Parse the main page and extract total pages, then proceed to parse each page."""
