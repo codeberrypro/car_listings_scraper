@@ -1,29 +1,22 @@
-# Define here the models for your scraped items
-#
-# See documentation in:
-# https://docs.scrapy.org/en/latest/topics/items.html
+# database.py
 
-import scrapy  # Define here the models for your scraped items
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, String, Integer, DateTime
 
-#
-# See documentation in:
-# https://docs.scrapy.org/en/latest/topics/items.html
-from dataclasses import dataclass
-from datetime import datetime
-from typing import Optional
-
-@dataclass
-class CarItem:
-    url: str
-    title: str
-    price_usd: Optional[int]
-    odometer: int
-    username: Optional[str]
-    phone_number: Optional[str]
-    image_url: Optional[str]
-    car_number: Optional[str]
-    car_vin: Optional[str]
-    datetime_found: datetime
+Base = declarative_base()
 
 
+class CarItem(Base):
+    __tablename__ = 'car_items'
 
+    id = Column(Integer, primary_key=True)
+    url = Column(String)
+    title = Column(String)
+    price_usd = Column(Integer)
+    odometer = Column(Integer)
+    username = Column(String)
+    phone_number = Column(String)
+    image_url = Column(String)
+    car_number = Column(String)
+    car_vin = Column(String)
+    datetime_found = Column(DateTime)
