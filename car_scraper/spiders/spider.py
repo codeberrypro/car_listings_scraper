@@ -11,11 +11,10 @@ class CarSpider(scrapy.Spider):
     allowed_domains = ["auto.ria.com"]
     start_urls = ["https://auto.ria.com/uk/car/used/"]
 
-
     def parse(self, response: HtmlResponse):
         """Parse the main page and extract total pages, then proceed to parse each page."""
-        total_pages_text = response.css("#pagination > nav > span:nth-child(8) > a::text").get()
-        total_pages = int(re.search(r'\d+', total_pages_text).group())
+        total_pages_selector = "#pagination > nav > span:nth-child(8) > a::text"
+        total_pages = response.css(total_pages_selector).get()
 
         for page_number in range(1, total_pages + 1):
             next_page_url = f"https://auto.ria.com/uk/car/used/?page={page_number}"
