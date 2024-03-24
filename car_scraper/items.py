@@ -19,4 +19,7 @@ class CarItem(Base):
     image_url = Column(String)
     car_number = Column(String)
     car_vin = Column(String)
+    city = Column(String)
+    owners_count = Column(Integer)
+    engine_info = Column(Integer)
     datetime_found = Column(DateTime)
