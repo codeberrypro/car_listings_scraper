@@ -21,5 +21,4 @@ class CarItem(Base):
     car_vin = Column(String)
     city = Column(String)
     owners_count = Column(Integer)
-    engine_info = Column(Integer)
     datetime_found = Column(DateTime)
